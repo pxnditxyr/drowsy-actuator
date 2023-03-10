@@ -1,12 +1,7 @@
-import express from 'express';
+import dotenv from 'dotenv';
+dotenv.config();
 
-const app = express();
+import { Server } from './models/Server.js';
 
-app.get( '/', ( _req, res ) => {
-  res.send( 'Hello World!' );
-});
-
-app.listen( 4000, () => {
-  console.log( 'Server is running on port 4000' );
-  console.log( 'http://localhost:4000' );
-});
+const server = new Server();
+server.listen();
