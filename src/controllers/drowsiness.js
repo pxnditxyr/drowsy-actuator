@@ -33,5 +33,4 @@ export const sendSignalToNotBrake = async ( _req, res ) => {
       message: 'Signal not sent, to not brake',
     });
   }
-
 };

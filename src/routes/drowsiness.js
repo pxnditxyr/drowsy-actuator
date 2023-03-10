@@ -4,7 +4,7 @@ import { sendSignalToBrake, sendSignalToNotBrake } from '../controllers/drowsine
 const router = Router();
 
 router.get( '/brake', sendSignalToBrake );
-router.get( '/brake', sendSignalToNotBrake );
+router.get( '/no-brake', sendSignalToNotBrake );
 
 
 export { router as drowsinessRouter };
