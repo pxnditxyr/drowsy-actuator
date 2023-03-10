@@ -21,7 +21,7 @@ export const sendSignalToBrake = async ( _req, res ) => {
 export const sendSignalToNotBrake = async ( _req, res ) => {
   const PIN_FRENAR = 21;
   try {
-    l//await gpiop.setup( PIN_FRENAR, gpiop.DIR_OUT );
+    //await gpiop.setup( PIN_FRENAR, gpiop.DIR_OUT );
 
     //await gpiop.write( PIN_FRENAR, false );
 
