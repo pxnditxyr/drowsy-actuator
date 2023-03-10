@@ -1,46 +1,22 @@
-import gpiop from 'rpi-gpio';
+import rpio from 'rpio';
 
 export const sendSignalToBrake = async ( _req, res ) => {
   const PIN_FRENAR = 21;
-  try {
-    await gpiop.setup( PIN_FRENAR, gpiop.DIR_OUT );
+  rpio.open(PIN_FRENAR, rpio.OUTPUT, rpio.LOW);
 
-    await gpiop.write( PIN_FRENAR, true );
-    return res.json({
-      message: 'Signal sent, to brake',
-    });
-  } catch ( err ) {
-    console.log( err );
-    return res.json({
-      message: 'Signal not sent, to brake',
-    });
+  for (var i = 0; i < 5; i++) {
+    rpio.write(PIN_FRENAR, rpio.HIGH);
+    rpio.sleep(1);
+
+    rpio.write(PIN_FRENAR, rpio.LOW);
+    rpio.msleep(500);
   }
-  
+
 };
 
 export const sendSignalToNotBrake = async ( _req, res ) => {
   const PIN_FRENAR = 21;
-  try {
-    //await gpiop.setup( PIN_FRENAR, gpiop.DIR_OUT );
-
-    //await gpiop.write( PIN_FRENAR, false );
-
-    gpiop.setup(21, gpiop.DIR_OUT)
-    .then(() => {
-        return gpiop.write(21, true)
-    })
-    .catch((err) => {
-        console.log('Error: ', err.toString())
-    })
-
-
-    return res.json({
-      message: 'Signal sent, to not brake',
-    });
-  } catch ( err ) {
-    console.log( err );
-    return res.json({
-      message: 'Signal not sent, to not brake',
-    });
-  }
+  return res.json({
+    message: 'xd'
+  })
 };
