@@ -10,10 +10,10 @@ export const sendSignalToGradualBrake = async ( _req, res ) => {
     for ( let i = 0; i < 10; i++ ) {
       if ( i % 2 === 0 ) {
         rpio.write( PIN_FRENAR, rpio.HIGH );
-        rpio.msleep( timesToSendSignal[ i ] );
+        rpio.msleep( timesToSendSignal[ parseInt( i / 2 ) ] );
       } else {
         rpio.write( PIN_FRENAR, rpio.LOW );
-        rpio.msleep( 500 );
+        rpio.msleep( 1000 );
       }
     }
     rpio.write( PIN_FRENAR, rpio.LOW );
@@ -49,7 +49,7 @@ export const sendSignalToNotBrake = async ( _req, res ) => {
   try {
     rpio.write( PIN_FRENAR, rpio.LOW );
     return res.json({
-      message: 'Se realizo el frenado'
+      message: 'Se dejo de frenar'
     })
   } catch ( err ) {
     console.log( err );
